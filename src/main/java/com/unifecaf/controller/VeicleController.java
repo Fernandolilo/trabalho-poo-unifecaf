@@ -50,5 +50,11 @@ public class VeicleController {
 
 	        return ResponseEntity.ok(service.founByModelo(modelo));
 	    }
+	 
+	 @GetMapping("/inicio/{inicio}/fim/{fim}")
+	    public ResponseEntity<List<VeiculoResponse>> findAllByBetWeen(@PathVariable int inicio, int fim) {
+
+	        return ResponseEntity.ok(service.founBetWeemByAno(inicio, fim));
+	    }
 
 }

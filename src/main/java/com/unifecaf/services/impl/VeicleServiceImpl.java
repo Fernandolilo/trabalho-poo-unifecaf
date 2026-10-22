@@ -48,9 +48,12 @@ public class VeicleServiceImpl implements VeicleService{
 	}
 
 	@Override
-	public List<VeiculoResponse> founBeetWeemByAno(int inicio, int fim) {
-		// TODO Auto-generated method stub
-		return null;
+	public List<VeiculoResponse> founBetWeemByAno(int inicio, int fim) {
+		 return repository.findByAnoBetween( inicio, fim)
+		            .stream()
+		            .map(entity -> mapper.map(entity, VeiculoResponse.class))
+		            .toList();
+	
 	}
 
 	@Override

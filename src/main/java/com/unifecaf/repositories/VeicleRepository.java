@@ -16,5 +16,9 @@ public interface VeicleRepository extends JpaRepository<Veiculo, UUID> {
 	  List<Veiculo> findByFabricante(String fabricante);
 
 	  List<Veiculo> findByModelo(String modelo);
+	  
+	  List<Veiculo> findByAnoBetween(int inicio, int fim);
 
+
+	  
 }
