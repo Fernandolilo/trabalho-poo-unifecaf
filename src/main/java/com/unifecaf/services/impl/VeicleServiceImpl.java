@@ -57,9 +57,11 @@ public class VeicleServiceImpl implements VeicleService{
 	}
 
 	@Override
-	public List<VeiculoResponse> founByBeetWeemPrice(BigDecimal precoInit, BigDecimal precoFim) {
-		// TODO Auto-generated method stub
-		return null;
+	public List<VeiculoResponse> founByBetWeemPrice(BigDecimal inicio, BigDecimal fim) {
+		 return repository.findByPrecoBetween( inicio, fim)
+		            .stream()
+		            .map(entity -> mapper.map(entity, VeiculoResponse.class))
+		            .toList();
 	}
 
 	@Override

@@ -1,5 +1,6 @@
 package com.unifecaf.controller;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 import org.springframework.http.HttpStatus;
@@ -55,6 +56,12 @@ public class VeicleController {
 	    public ResponseEntity<List<VeiculoResponse>> findAllByBetWeen(@PathVariable int inicio, int fim) {
 
 	        return ResponseEntity.ok(service.founBetWeemByAno(inicio, fim));
+	    }
+	 
+	 @GetMapping("preco/inicio/{inicio}/fim/{fim}")
+	    public ResponseEntity<List<VeiculoResponse>> findAllByPriceBetWeen(@PathVariable BigDecimal inicio, BigDecimal fim) {
+
+	        return ResponseEntity.ok(service.founByBetWeemPrice(inicio, fim));
 	    }
 
 }

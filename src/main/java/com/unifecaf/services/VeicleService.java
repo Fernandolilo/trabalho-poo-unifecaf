@@ -13,7 +13,7 @@ public interface VeicleService {
 	List<VeiculoResponse> founByMarca (String marca);
 	List<VeiculoResponse> founByModelo (String modelo);
 	List<VeiculoResponse> founBetWeemByAno (int inicio, int fim);
-	List<VeiculoResponse> founByBeetWeemPrice (BigDecimal precoInit,BigDecimal precoFim );
+	List<VeiculoResponse> founByBetWeemPrice (BigDecimal precoInit,BigDecimal precoFim );
 	
 	Veiculo update (String status);
 	VeiculoResponse save (VeiculoRequest request);

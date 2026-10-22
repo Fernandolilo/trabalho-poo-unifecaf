@@ -1,5 +1,6 @@
 package com.unifecaf.repositories;
 
+import java.math.BigDecimal;
 import java.util.List;
 import java.util.UUID;
 
@@ -18,6 +19,8 @@ public interface VeicleRepository extends JpaRepository<Veiculo, UUID> {
 	  List<Veiculo> findByModelo(String modelo);
 	  
 	  List<Veiculo> findByAnoBetween(int inicio, int fim);
+	  
+	  List<Veiculo> findByPrecoBetween(BigDecimal inicio, BigDecimal fim);
 
 
 	  
