@@ -12,5 +12,9 @@ import com.unifecaf.entity.Veiculo;
 public interface VeicleRepository extends JpaRepository<Veiculo, UUID> {
 	
 	  List<Veiculo> findByAno(int ano);
+	  
+	  List<Veiculo> findByFabricante(String fabricante);
+
+	  List<Veiculo> findByModelo(String modelo);
 
 }

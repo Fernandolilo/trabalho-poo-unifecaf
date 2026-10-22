@@ -32,15 +32,19 @@ public class VeicleServiceImpl implements VeicleService{
 	}
 
 	@Override
-	public List<VeiculoResponse> founByMarca(String marca) {
-		// TODO Auto-generated method stub
-		return null;
+	public List<VeiculoResponse> founByMarca(String fabricante) {
+		 return repository.findByFabricante(fabricante)
+		            .stream()
+		            .map(entity -> mapper.map(entity, VeiculoResponse.class))
+		            .toList();
 	}
 
 	@Override
 	public List<VeiculoResponse> founByModelo(String modelo) {
-		// TODO Auto-generated method stub
-		return null;
+		 return repository.findByModelo(modelo)
+		            .stream()
+		            .map(entity -> mapper.map(entity, VeiculoResponse.class))
+		            .toList();
 	}
 
 	@Override

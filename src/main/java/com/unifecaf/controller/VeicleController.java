@@ -33,10 +33,22 @@ public class VeicleController {
 	                .body(create);
 	}
 	
-	 @GetMapping(value = "/{ano}")
-	    public ResponseEntity<List<VeiculoResponse>> findAll(@PathVariable int ano) {
+	 @GetMapping(value = "ano/{ano}")
+	    public ResponseEntity<List<VeiculoResponse>> findAllByAno(@PathVariable int ano) {
 
 	        return ResponseEntity.ok(service.founByAno(ano));
+	    }
+	 
+	 @GetMapping(value = "fabricante/{fabricante}")
+	    public ResponseEntity<List<VeiculoResponse>> findAllByMarca(@PathVariable String fabricante) {
+
+	        return ResponseEntity.ok(service.founByMarca(fabricante));
+	    }
+	 
+	 @GetMapping(value = "modelo/{modelo}")
+	    public ResponseEntity<List<VeiculoResponse>> findAllByModelo(@PathVariable String modelo) {
+
+	        return ResponseEntity.ok(service.founByModelo(modelo));
 	    }
 
 }
