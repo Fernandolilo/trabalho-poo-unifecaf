@@ -22,10 +22,13 @@ public class VeicleServiceImpl implements VeicleService{
 	private final VeicleRepository repository;
 	private final ModelMapper mapper;
 
+	
 	@Override
 	public List<VeiculoResponse> founByAno(int ano) {
-		// TODO Auto-generated method stub
-		return null;
+		  return repository.findByAno(ano)
+		            .stream()
+		            .map(entity -> mapper.map(entity, VeiculoResponse.class))
+		            .toList();
 	}
 
 	@Override

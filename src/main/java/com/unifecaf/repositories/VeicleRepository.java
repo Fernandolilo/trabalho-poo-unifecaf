@@ -1,5 +1,6 @@
 package com.unifecaf.repositories;
 
+import java.util.List;
 import java.util.UUID;
 
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -9,5 +10,7 @@ import com.unifecaf.entity.Veiculo;
 
 @Repository
 public interface VeicleRepository extends JpaRepository<Veiculo, UUID> {
+	
+	  List<Veiculo> findByAno(int ano);
 
 }
