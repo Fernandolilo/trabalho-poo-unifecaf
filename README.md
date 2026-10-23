@@ -101,9 +101,16 @@ O projeto inclui Springdoc OpenAPI para documentação dos endpoints.
 Após iniciar a aplicação, tente acessar a interface Swagger UI em:
 
 ```text
-http://localhost:8080/swagger-ui/index.html
+http://localhost:8000/api/veicle/swagger-ui/index.html
 ```
 
+## Banco de dados em memoria
+
+O projeto possui um banco de dados em memoria o H2
+
+```text
+http://localhost:8000/api/veicle/h2-console/
+```
 A disponibilidade dessa URL depende da porta configurada e da inicialização correta da aplicação.
 
 ## Objetivos de aprendizagem
