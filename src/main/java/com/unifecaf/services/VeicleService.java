@@ -16,7 +16,9 @@ public interface VeicleService {
 	List<VeiculoResponse> founBetWeemByAno (int inicio, int fim);
 	List<VeiculoResponse> founByBetWeemPrice (BigDecimal precoInit,BigDecimal precoFim );
 	
-	VeiculoResponse venda (UUID id, StatusVeiculo statuss);
+	List<VeiculoResponse> founByStatus (StatusVeiculo statuss);
+	
+	VeiculoResponse venda (UUID id, StatusVeiculo status);
 	
 	VeiculoResponse foundById (UUID id);
 	VeiculoResponse save (VeiculoRequest request);

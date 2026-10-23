@@ -57,6 +57,12 @@ public class VeicleController {
 	        return ResponseEntity.ok(service.founByMarca(fabricante));
 	    }
 	 
+	 @GetMapping(value = "disponibilidade/{status}")
+	    public ResponseEntity<List<VeiculoResponse>> findAllByMarca(@PathVariable StatusVeiculo status) {
+
+	        return ResponseEntity.ok(service.founByStatus(status));
+	    }
+	 
 	 @GetMapping(value = "modelo/{modelo}")
 	    public ResponseEntity<List<VeiculoResponse>> findAllByModelo(@PathVariable String modelo) {
 

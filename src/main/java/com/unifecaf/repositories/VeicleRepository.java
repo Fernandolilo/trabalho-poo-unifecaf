@@ -8,6 +8,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 import com.unifecaf.entity.Veiculo;
+import com.unifecaf.entity.enums.StatusVeiculo;
 
 @Repository
 public interface VeicleRepository extends JpaRepository<Veiculo, UUID> {
@@ -15,6 +16,8 @@ public interface VeicleRepository extends JpaRepository<Veiculo, UUID> {
 	  List<Veiculo> findByAno(int ano);
 	  
 	  List<Veiculo> findByFabricante(String fabricante);
+	  
+	  List<Veiculo> findByStatusVeiculo(StatusVeiculo statusVeiculo);
 
 	  List<Veiculo> findByModelo(String modelo);
 	  

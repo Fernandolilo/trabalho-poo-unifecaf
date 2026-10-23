@@ -107,6 +107,14 @@ public class VeicleServiceImpl implements VeicleService{
 
 	    return mapper.map(veiculoAtualizado, VeiculoResponse.class);
 	}
+
+	@Override
+	public List<VeiculoResponse> founByStatus(StatusVeiculo statuss) {
+		 return repository.findByStatusVeiculo(statuss)
+		            .stream()
+		            .map(entity -> mapper.map(entity, VeiculoResponse.class))
+		            .toList();
+	}
 	
 	
 	
