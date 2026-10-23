@@ -2,11 +2,14 @@ package com.unifecaf.services.impl;
 
 import java.math.BigDecimal;
 import java.util.List;
+import java.util.Optional;
+import java.util.UUID;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
 import com.unifecaf.entity.Veiculo;
+import com.unifecaf.entity.enums.StatusVeiculo;
 import com.unifecaf.entity.requesty.VeiculoRequest;
 import com.unifecaf.entity.response.VeiculoResponse;
 import com.unifecaf.repositories.VeicleRepository;
@@ -64,11 +67,8 @@ public class VeicleServiceImpl implements VeicleService{
 		            .toList();
 	}
 
-	@Override
-	public Veiculo update(String status) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+
+	
 
 	@Transactional
 	@Override
@@ -77,9 +77,37 @@ public class VeicleServiceImpl implements VeicleService{
 		Veiculo entity = mapper.map(request, Veiculo.class);
 		
 		repository.save(entity);
-		
-		// TODO Auto-generated method stub
+	
 		return mapper.map(entity, VeiculoResponse.class);
 	}
 
+	@Override
+	public VeiculoResponse foundById(UUID id) {
+		
+		Veiculo entiity = repository.findById(id)
+				.orElseThrow(() -> new RuntimeException("Veiculo não encontrado"));
+		
+		return mapper.map(entiity, VeiculoResponse.class);
+		
+	}
+	
+	
+	@Override
+	@Transactional
+	public VeiculoResponse venda(UUID id, StatusVeiculo status) {
+
+	    Veiculo veiculo = repository.findById(id)
+	            .orElseThrow(() ->
+	                    new RuntimeException(
+	                            "Veículo não encontrado: " + id
+	                    ));
+
+	    veiculo.setStatusVeiculo(status);
+	    Veiculo veiculoAtualizado = repository.save(veiculo);
+
+	    return mapper.map(veiculoAtualizado, VeiculoResponse.class);
+	}
+	
+	
+	
 }

@@ -2,16 +2,19 @@ package com.unifecaf.controller;
 
 import java.math.BigDecimal;
 import java.util.List;
+import java.util.UUID;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.unifecaf.entity.enums.StatusVeiculo;
 import com.unifecaf.entity.requesty.VeiculoRequest;
 import com.unifecaf.entity.response.VeiculoResponse;
 import com.unifecaf.services.VeicleService;
@@ -29,6 +32,14 @@ public class VeicleController {
 	@PostMapping
 	public ResponseEntity<VeiculoResponse> create (@Valid @RequestBody VeiculoRequest request){
 		VeiculoResponse create = service.save(request);
+		 return ResponseEntity
+	                .status(HttpStatus.CREATED)
+	                .body(create);
+	}
+	
+	@PutMapping(value = "/venda/id/{id}status/{status}")
+	public ResponseEntity<VeiculoResponse> venda (@Valid @PathVariable UUID id,  StatusVeiculo status){
+		VeiculoResponse create = service.venda(id, status);
 		 return ResponseEntity
 	                .status(HttpStatus.CREATED)
 	                .body(create);
